@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux"
 import { decrement, increment, reset } from "../component/redux/counter/store/store";
 import "./App.css"
-const App = () =>{
+const Counter = () =>{
     const count = useSelector((state)=> state.counter.count);
     const dispatch = useDispatch();
     return(
@@ -17,4 +17,4 @@ const App = () =>{
     )
 }
 
-export default App;
+export default Counter;
