@@ -1,10 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
-import todoReducer from "./todoSlice"
+import  userReducer  from "./userSlice";
 
 const Store = configureStore({
     reducer : {
-        todo : todoReducer,
+        users : userReducer,
     }
 })
+
 
 export default Store;
