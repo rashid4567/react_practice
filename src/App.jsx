@@ -1,10 +1,15 @@
-import UserList from "../component/redux/asyncthunk/userList"
-
-
+import { useRef } from "react"
+import "./App.css"
 const App = () =>{
+    const inputRef = useRef(null);
+    const submit = () =>{
+        inputRef.current.focus();
+        alert(`You are entered ${inputRef.current.value}`)
+    }
     return(
         <div>
-            <UserList/>
+            <input type="text" ref={inputRef} placeholder="Enter something..."/>
+            <button onClick={submit}>submit</button>
         </div>
     )
 }
