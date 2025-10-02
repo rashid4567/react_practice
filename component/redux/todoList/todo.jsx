@@ -1,30 +1,29 @@
 import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux";
-import { addTodo, deleteTodo } from "./todoSlice";
+import { ADDtodo, DeleteTodo } from "./todoSlice";
 
 const Todo = () =>{
-    const [task,setTask] = useState('');
+    const [input,setInput] = useState("");
     const todos = useSelector((state)=> state.todo);
     const dispatch = useDispatch();
-
-    const handleAdd = () =>{
-        if(task.trim("") !== ""){
-            dispatch(addTodo(task))
-            setTask("")
+        const handleInput = () =>{
+            if(input.trim() !== ""){
+                dispatch(ADDtodo(input))
+                setInput("")
+            }
         }
-    }
-
     return(
         <div>
-            <h4>todo list</h4>
-            <input value={task} type="text" placeholder="Enter the task" onChange={(e)=> setTask(e.target.value)}/>
-            <button onClick={handleAdd}>ADD</button>
+            <h4>Todo list</h4>
+            <input type="text" value={input} placeholder="Enter task" onChange={(e)=> setInput(e.target.value)}/>
+            <button onClick={handleInput}>ADD</button>
             <ul>
-               {todos.map((todo)=>(
-                <li key={todo.id}>{todo.text}{"   "}
-                <button onClick={()=> dispatch(deleteTodo(todo.id))}>X</button>
-                </li>
-               ))} 
+                {todos.map((todo)=>(
+                    <li key={todo.id}>
+                        {todo.text}
+                        <button onClick={()=> dispatch(DeleteTodo(todo.id))}>X</button>
+                    </li>
+                ))}
             </ul>
         </div>
     )
